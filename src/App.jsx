@@ -9,6 +9,7 @@ import {
 import styled from '@emotion/styled';
 
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 
 const Container = styled.div({
   margin: '0 auto',
@@ -42,6 +43,7 @@ export default function App() {
       </Header>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
       </Switch>
     </Container>
   );
