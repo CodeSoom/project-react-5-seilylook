@@ -11,5 +11,6 @@ describe('PamphletPage', () => {
     ));
 
     expect(container).toHaveTextContent('경배와 찬양');
+    expect(container).toHaveTextContent('비전 선언문');
   });
 });

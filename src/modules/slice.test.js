@@ -41,6 +41,20 @@ describe('reducer', () => {
         password: '',
       },
       accessToken: '',
+      newId: 103,
+      inputTitles: [
+        {
+          name: 'title',
+          placeholder: '제목',
+          text: '',
+        },
+        {
+          name: 'description',
+          placeholder: '내용',
+          text: '',
+        },
+      ],
+      contents: [],
     };
 
     it('returns initialState', () => {

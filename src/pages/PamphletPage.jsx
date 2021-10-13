@@ -13,6 +13,7 @@ const Body = styled.body({
 export default function PamphletPage() {
   return (
     <div>
+      <h2>새에덴 교회 청년부 주보</h2>
       <Header>
         <img src="../../images/헤더.png" alt="헤더" />
       </Header>
