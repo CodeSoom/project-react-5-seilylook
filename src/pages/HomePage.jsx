@@ -30,6 +30,9 @@ export default function HomePage() {
         <Item>
           <Link to="/login">로그인</Link>
         </Item>
+        <Item>
+          <Link to="/pamphlet">주보</Link>
+        </Item>
       </List>
     </div>
   );

@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import PamphletPage from './pages/PamphletPage';
 
 const Container = styled.div({
   margin: '0 auto',
@@ -44,6 +45,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/pamphlet" component={PamphletPage} />
       </Switch>
     </Container>
   );
