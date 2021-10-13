@@ -33,6 +33,9 @@ export default function HomePage() {
         <Item>
           <Link to="/pamphlet">주보</Link>
         </Item>
+        <Item>
+          <Link to="/diaryInput">기도 노트</Link>
+        </Item>
       </List>
     </div>
   );

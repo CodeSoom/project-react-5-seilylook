@@ -56,5 +56,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
 
     'import/no-unresolved': 'off',
+
   },
 };
