@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import PamphletPage from './pages/PamphletPage';
 import DiaryInputPage from './pages/DiaryInputPage';
+import DiaryListPage from './pages/DiaryListPage';
 
 const Container = styled.div({
   margin: '0 auto',
@@ -48,6 +49,7 @@ export default function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/pamphlet" component={PamphletPage} />
         <Route path="/diaryinput" component={DiaryInputPage} />
+        <Route path="/diaryList" component={DiaryListPage} />
       </Switch>
     </Container>
   );

@@ -4,7 +4,7 @@ const initialState = {
     email: '',
     password: '',
   },
-  newId: '',
+  newId: 103,
   inputTitles: [
     {
       name: 'title',
@@ -62,14 +62,14 @@ const reducers = {
     const { newId, inputTitles, contents } = state;
     const [title, description] = inputTitles;
 
-    const newContext = inputTitles.map((restaurantTitle) => ({
-      ...restaurantTitle,
+    const newContext = inputTitles.map((inputTitle) => ({
+      ...inputTitle,
       value: '',
     }));
 
-    const emptyContext = inputTitles.filter((restaurantTitle) => restaurantTitle.value === '').length;
+    const emptyContent = inputTitles.filter((inputTitle) => inputTitle.value === '').length;
 
-    if (emptyContext) {
+    if (emptyContent) {
       return state;
     }
 
