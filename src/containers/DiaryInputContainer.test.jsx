@@ -41,7 +41,7 @@ describe('DiaryInputContainer', () => {
 
   context('when content is changed', () => {
     it('updates contents', () => {
-      const { getByPlaceholderText } = render((
+      const { getByText, getByPlaceholderText } = render((
         <DiaryInputContainer />
       ));
 
@@ -50,8 +50,17 @@ describe('DiaryInputContainer', () => {
       });
 
       expect(dispatch).toBeCalledWith({
-        type: 'application/changeContent',
-        payload: { name: 'title', value: 'new title' },
+        type: 'changeContent',
+        payload: {
+          name: 'title',
+          value: 'new title',
+        },
+      });
+
+      fireEvent.click(getByText('등록'));
+
+      expect(dispatch).toBeCalledWith({
+        type: 'addContent',
       });
     });
   });
