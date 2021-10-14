@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +8,7 @@ import InputPage from '../components/diary/InputPage';
 import {
   changeContent,
   addContent,
-} from '../modules/slice';
+} from '../modules/actions';
 
 export default function DiaryInputContainer() {
   const dispatch = useDispatch();
@@ -16,19 +17,19 @@ export default function DiaryInputContainer() {
     inputTitles: state.inputTitles,
   }));
 
-  const handleChangeContent = ({ name, value }) => {
-    dispatch(changeContent({ name, value }));
-  };
+  function handleChangeContent(name, event) {
+    dispatch(changeContent(name, event.target.value));
+  }
 
-  const handleClicksetContent = () => {
+  function handleClickAddContent() {
     dispatch(addContent());
-  };
+  }
 
   return (
     <InputPage
       inputTitles={inputTitles}
       onChange={handleChangeContent}
-      onClick={handleClicksetContent}
+      onClick={handleClickAddContent}
     />
   );
 }

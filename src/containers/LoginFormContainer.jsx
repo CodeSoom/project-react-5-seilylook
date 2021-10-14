@@ -7,7 +7,7 @@ import {
   changeLoginField,
   requestLogin,
   logout,
-} from '../modules/slice';
+} from '../modules/actions';
 
 import { get } from '../modules/utils';
 
@@ -40,6 +40,7 @@ export default function LoginPageContainer() {
           onSubmit={handleSubmit}
         />
       )}
+      <p>{accessToken}</p>
     </>
   );
 }
