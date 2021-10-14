@@ -40,6 +40,7 @@ export default function LoginPageContainer() {
           onSubmit={handleSubmit}
         />
       )}
+      <p>{accessToken}</p>
     </>
   );
 }
