@@ -6,17 +6,16 @@ import Item from './Item';
 
 describe('Item', () => {
   it('shows contents', () => {
-    const newContent = {
-      id: '100',
-      title: '새 제목',
-      description: '새 설명',
+    const content = {
+      id: 100,
+      title: '제목1',
+      desciption: '설명1',
     };
 
     const { container } = render((
-      <Item restaurant={newContent} />
+      <Item content={content} />
     ));
 
-    expect(container).toHaveTextContent('새 제목');
-    expect(container).toHaveTextContent('새 설명');
+    expect(container).toHaveTextContent('제목1');
   });
 });
