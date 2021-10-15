@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import DiaryInputContainer from './DiaryInputContainer';
 
-jest.mock('react-redux');
-
 describe('DiaryInputContainer', () => {
   const dispatch = jest.fn();
 
@@ -24,31 +22,36 @@ describe('DiaryInputContainer', () => {
     },
   ];
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    dispatch.mockClear();
 
-  useSelector.mockImplementation((selector) => selector({
-    inputTitles,
-  }));
+    useDispatch.mockImplementation(() => dispatch);
 
-  it('shows placeholders', () => {
-    const { getByPlaceholderText } = render((
-      <DiaryInputContainer />
-    ));
-
-    expect(getByPlaceholderText('제목')).toBeInTheDocument();
-    expect(getByPlaceholderText('내용')).toBeInTheDocument();
+    useSelector.mockImplementation((selector) => selector({
+      inputTitles,
+      accessToken: given.accessToken,
+    }));
   });
 
-  context('when content is changed', () => {
-    it('updates contents', () => {
-      const { getByText, getByPlaceholderText } = render((
+  context('without logged in', () => {
+    given('accessToken', () => 'ACCESS_TOKEN');
+
+    it('renders placeholders', () => {
+      const { getByPlaceholderText } = render((
         <DiaryInputContainer />
       ));
 
+      expect(getByPlaceholderText('제목')).not.toBeNull();
+      expect(getByPlaceholderText('내용')).not.toBeNull();
+    });
+
+    it('listens change event', () => {
+      const { getByText, getByPlaceholderText } = render((
+        <DiaryInputContainer />
+      ));
       fireEvent.change(getByPlaceholderText('제목'), {
         target: { value: 'new title' },
       });
-
       expect(dispatch).toBeCalledWith({
         type: 'changeContent',
         payload: {
@@ -56,9 +59,7 @@ describe('DiaryInputContainer', () => {
           value: 'new title',
         },
       });
-
       fireEvent.click(getByText('등록'));
-
       expect(dispatch).toBeCalledWith({
         type: 'addContent',
       });

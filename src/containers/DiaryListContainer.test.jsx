@@ -22,11 +22,13 @@ describe('DiaryListContainer', () => {
     },
   ];
 
-  it('shows contents list', () => {
-    useSelector.mockImplementation((selector) => selector({
-      contents,
-    }));
+  useSelector.mockImplementation((selector) => selector({
+    contents,
+    accessToken: given.accessToken,
+  }));
 
+  it('shows contents list', () => {
+    given('accessToken', () => 'ACCESS_TOKEN');
     const { container } = render((
       <DiaryListContainer />
     ));
