@@ -10,8 +10,12 @@ import {
   addContent,
 } from '../modules/actions';
 
+import { get } from '../modules/utils';
+
 export default function DiaryInputContainer() {
   const dispatch = useDispatch();
+
+  const accessToken = useSelector(get('accessToken'));
 
   const { inputTitles } = useSelector((state) => ({
     inputTitles: state.inputTitles,
@@ -26,10 +30,14 @@ export default function DiaryInputContainer() {
   }
 
   return (
-    <InputPage
-      inputTitles={inputTitles}
-      onChange={handleChangeContent}
-      onClick={handleClickAddContent}
-    />
+    <>
+      {accessToken ? (
+        <InputPage
+          inputTitles={inputTitles}
+          onChange={handleChangeContent}
+          onClick={handleClickAddContent}
+        />
+      ) : null}
+    </>
   );
 }

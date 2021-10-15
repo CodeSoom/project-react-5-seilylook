@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+
 import {
   Link,
   Switch,
@@ -13,6 +15,10 @@ import LoginPage from './pages/LoginPage';
 import PamphletPage from './pages/PamphletPage';
 import DiaryInputPage from './pages/DiaryInputPage';
 import DiaryListPage from './pages/DiaryListPage';
+
+import { setAccessToken } from './modules/actions';
+
+import { loadItem } from './services/storage';
 
 const Container = styled.div({
   margin: '0 auto',
@@ -37,6 +43,14 @@ const Header = styled.header({
 });
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  const accessToken = loadItem('accessToken');
+
+  if (accessToken) {
+    dispatch(setAccessToken(accessToken));
+  }
+
   return (
     <Container>
       <Header>

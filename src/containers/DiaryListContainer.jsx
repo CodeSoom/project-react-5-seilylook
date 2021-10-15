@@ -4,12 +4,20 @@ import { useSelector } from 'react-redux';
 
 import List from '../components/diary/List';
 
+import { get } from '../modules/utils';
+
 export default function DiaryListContainer() {
+  const accessToken = useSelector(get('accessToken'));
+
   const { contents } = useSelector((state) => ({
     contents: state.contents,
   }));
 
   return (
-    <List contents={contents} />
+    <>
+      {accessToken ? (
+        <List contents={contents} />
+      ) : null}
+    </>
   );
 }
