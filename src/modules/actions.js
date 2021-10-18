@@ -4,22 +4,6 @@ import {
 
 import { saveItem } from '../services/storage';
 
-export function changeContent(name, value) {
-  return {
-    type: 'changeContent',
-    payload: {
-      name,
-      value,
-    },
-  };
-}
-
-export function addContent() {
-  return {
-    type: 'addContent',
-  };
-}
-
 export function changeLoginField({ name, value }) {
   return {
     type: 'changeLoginField',
@@ -49,5 +33,30 @@ export function requestLogin() {
 export function logout() {
   return {
     type: 'logout',
+  };
+}
+
+export function setDiaries(diaries) {
+  return {
+    type: 'setDiaries',
+    payload: {
+      diaries,
+    },
+  };
+}
+
+export function addDiary() {
+  return {
+    type: 'addDiary',
+  };
+}
+
+export function changeDiaryField({ name, value }) {
+  return {
+    type: 'changeDiaryField',
+    payload: {
+      name,
+      value,
+    },
   };
 }

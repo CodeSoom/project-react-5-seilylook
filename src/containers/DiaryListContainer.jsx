@@ -9,14 +9,14 @@ import { get } from '../modules/utils';
 export default function DiaryListContainer() {
   const accessToken = useSelector(get('accessToken'));
 
-  const { contents } = useSelector((state) => ({
-    contents: state.contents,
+  const { diaries } = useSelector((state) => ({
+    diaries: state.diaries,
   }));
 
   return (
     <>
       {accessToken ? (
-        <List contents={contents} />
+        <List diaries={diaries} />
       ) : null}
     </>
   );

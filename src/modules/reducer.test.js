@@ -1,97 +1,64 @@
 import reducer from './reducer';
 
 import {
-  changeContent,
-  addContent,
+  setDiaries,
+  changeDiaryField,
+  addDiary,
 } from './actions';
 
+import diaries from '../../fixtures/diaries';
+
 describe('reducer', () => {
-  describe('changeContent', () => {
-    it('shows changeContent action', () => {
-      const state = reducer({
-        inputTitles: [
-          {
-            name: 'title',
-            placeholder: '제목',
-            value: '',
-          },
-          {
-            name: 'description',
-            placeholder: '설명',
-            value: '',
-          },
-        ],
-      }, changeContent('title', 'new-title'));
+  describe('setDiaries', () => {
+    it('shows diaries', () => {
+      const initialState = {
+        diaries: [],
+      };
 
-      expect(state.inputTitles[0].value).toBe('new-title');
+      const state = reducer(initialState, setDiaries(diaries));
+
+      expect(state.diaries).not.toHaveLength(0);
     });
   });
 
-  describe('addContent', () => {
-    function reduceAddContent(newTitle, newDescription) {
-      return reducer({
-        newId: 103,
-        inputTitles: [
-          {
-            name: 'title',
-            placeholder: '제목',
-            value: newTitle,
-          },
-          {
-            name: 'description',
-            placeholder: '설명',
-            value: newDescription,
-          },
-        ],
-        contents: [
-          {
-            id: 101,
-            title: '첫번째 제목',
-            description: '첫번째 설명',
-          },
-          {
-            id: 102,
-            title: '두번째 제목',
-            description: '두번째 설명',
-          },
-        ],
-      }, addContent());
-    }
+  describe('changeDiaryField', () => {
+    it('changes diary field', () => {
+      const initialState = {
+        diary: {
+          title: '제목',
+          description: '설명',
+        },
+      };
 
-    context('with existed content', () => {
-      it('adds a new restaurant into contents', () => {
-        const state = reduceAddContent('세번째 제목', '세번째 설명');
+      const state = reducer(initialState, changeDiaryField({
+        name: 'title',
+        value: '수정된 제목',
+      }));
 
-        expect(state.contents).toHaveLength(3);
-        expect(state.contents[2].id).not.toBeUndefined();
-        expect(state.contents[2].title).toBe('세번째 제목');
-        expect(state.contents[2].description).toBe('세번째 설명');
-      });
-
-      it('clears input fields after add action finished', () => {
-        const state = reduceAddContent('세번째 제목', '세번째 설명');
-
-        expect(state.inputTitles[0].value).toBe('');
-        expect(state.inputTitles[1].value).toBe('');
-      });
-    });
-
-    context('without existed content', () => {
-      it('does not add work', () => {
-        const state = reduceAddContent('', '');
-
-        expect(state.contents).toHaveLength(2);
-      });
+      expect(state.diary.title).toBe('수정된 제목');
     });
   });
 
-  describe('without contents', () => {
-    it('shos empty content list', () => {
-      const state = reducer(
-        undefined, { type: '', payload: {} },
-      );
+  describe('add diary', () => {
+    it('adds new diary', () => {
+      const initialState = {
+        newId: 101,
+        diaries: [],
+        diary: {
+          title: '새로운 제목',
+          description: '새로운 설명',
+        },
+      };
 
-      expect(state).toBe(state);
+      const state = reducer(initialState, addDiary());
+
+      expect(state.diaries).toHaveLength(1);
+
+      const diary = state.diaries[state.diaries.length - 1];
+
+      expect(diary.id).toBe(101);
+      expect(state.diary.title).toBe('');
+      expect(state.newId).toBe(102);
     });
   });
 });

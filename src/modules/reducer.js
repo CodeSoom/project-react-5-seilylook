@@ -1,3 +1,8 @@
+const initialDiary = {
+  title: '',
+  description: '',
+};
+
 const initialState = {
   accessToken: '',
   loginFields: {
@@ -6,20 +11,9 @@ const initialState = {
     phoneNumber: '',
     affiliation: '',
   },
-  newId: 103,
-  inputTitles: [
-    {
-      name: 'title',
-      placeholder: '제목',
-      text: '',
-    },
-    {
-      name: 'description',
-      placeholder: '설명',
-      text: '',
-    },
-  ],
-  contents: [],
+  newId: 100,
+  diaries: [],
+  diary: initialDiary,
 };
 
 const reducers = {
@@ -47,43 +41,31 @@ const reducers = {
     };
   },
 
-  changeContent(state, { payload: { name, value } }) {
-    const newContext = state.inputTitles.map((inputTitle) => ({
-      ...inputTitle,
-      value: inputTitle.name === name
-        ? value : inputTitle.value,
-    }));
-
+  setDiaries(state, { payload: { diaries } }) {
     return {
       ...state,
-      inputTitles: newContext,
+      diaries,
     };
   },
 
-  addContent(state) {
-    const { newId, inputTitles, contents } = state;
-    const [title, description] = inputTitles;
+  changeDiaryField(state, { payload: { name, value } }) {
+    return {
+      ...state,
+      diary: {
+        ...state.diary,
+        [name]: value,
+      },
+    };
+  },
 
-    const newContext = inputTitles.map((inputTitle) => ({
-      ...inputTitle,
-      value: '',
-    }));
-
-    const emptyContent = inputTitles.filter((inputTitle) => inputTitle.value === '').length;
-
-    if (emptyContent) {
-      return state;
-    }
+  addDiary(state) {
+    const { newId, diaries, diary } = state;
 
     return {
       ...state,
       newId: newId + 1,
-      inputTitles: newContext,
-      contents: [...contents, {
-        id: newId,
-        title: title.value,
-        description: description.value,
-      }],
+      diaries: [...diaries, { ...diary, id: newId }],
+      diary: initialDiary,
     };
   },
 };
