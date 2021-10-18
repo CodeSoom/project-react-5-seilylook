@@ -6,21 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import DiaryInputContainer from './DiaryInputContainer';
 
+jest.mock('react-redux');
+
 describe('DiaryInputContainer', () => {
   const dispatch = jest.fn();
-
-  const inputTitles = [
-    {
-      name: 'title',
-      placeholder: '제목',
-      value: '',
-    },
-    {
-      name: 'description',
-      placeholder: '내용',
-      value: '',
-    },
-  ];
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -28,40 +17,39 @@ describe('DiaryInputContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      inputTitles,
+      diary: {
+        title: '오늘의 일기',
+        description: '동해물과 백두산이',
+      },
       accessToken: given.accessToken,
     }));
   });
 
-  context('without logged in', () => {
+  context('without logged-in', () => {
+    it('renders no diary input fields', () => {
+      const { queryByLabelText } = render((
+        <DiaryInputContainer />
+      ));
+
+      expect(queryByLabelText('제목')).toBeNull();
+    });
+  });
+
+  context('with logged-in', () => {
     given('accessToken', () => 'ACCESS_TOKEN');
 
-    it('renders placeholders', () => {
-      const { getByPlaceholderText } = render((
+    it('renders diary input fields', () => {
+      const { getByText, getByPlaceholderText } = render((
         <DiaryInputContainer />
       ));
 
       expect(getByPlaceholderText('제목')).not.toBeNull();
-      expect(getByPlaceholderText('내용')).not.toBeNull();
-    });
+      expect(getByText('등록')).not.toBeNull();
 
-    it('listens change event', () => {
-      const { getByText, getByPlaceholderText } = render((
-        <DiaryInputContainer />
-      ));
-      fireEvent.change(getByPlaceholderText('제목'), {
-        target: { value: 'new title' },
-      });
-      expect(dispatch).toBeCalledWith({
-        type: 'changeContent',
-        payload: {
-          name: 'title',
-          value: 'new title',
-        },
-      });
       fireEvent.click(getByText('등록'));
+
       expect(dispatch).toBeCalledWith({
-        type: 'addContent',
+        type: 'addDiary',
       });
     });
   });

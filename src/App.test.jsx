@@ -13,33 +13,8 @@ jest.mock('react-redux');
 describe('App', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
-      newId: '',
-      inputTitles: [
-        {
-          name: 'title',
-          placeholder: '제목',
-          text: '',
-        },
-        {
-          name: 'description',
-          placeholder: '설명',
-          text: '',
-        },
-      ],
-      contents: [
-        {
-          id: 101,
-          title: '첫번째 제목',
-          description: '첫번째 설명',
-          value: '',
-        },
-        {
-          id: 102,
-          title: '두번째 제목',
-          description: '두번째 설명',
-          value: '',
-        },
-      ],
+      diaries: [],
+      diary: {},
     }));
   });
 

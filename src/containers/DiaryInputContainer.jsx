@@ -3,11 +3,11 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import InputPage from '../components/diary/InputPage';
+import DiaryForm from '../components/diary/DiaryForm';
 
 import {
-  changeContent,
-  addContent,
+  addDiary,
+  changeDiaryField,
 } from '../modules/actions';
 
 import { get } from '../modules/utils';
@@ -17,25 +17,25 @@ export default function DiaryInputContainer() {
 
   const accessToken = useSelector(get('accessToken'));
 
-  const { inputTitles } = useSelector((state) => ({
-    inputTitles: state.inputTitles,
+  const { diary } = useSelector((state) => ({
+    diary: state.diary,
   }));
 
-  function handleChangeContent(name, event) {
-    dispatch(changeContent(name, event.target.value));
+  function handleClick() {
+    dispatch(addDiary());
   }
 
-  function handleClickAddContent() {
-    dispatch(addContent());
+  function handleChange({ name, value }) {
+    dispatch(changeDiaryField({ name, value }));
   }
 
   return (
     <>
       {accessToken ? (
-        <InputPage
-          inputTitles={inputTitles}
-          onChange={handleChangeContent}
-          onClick={handleClickAddContent}
+        <DiaryForm
+          diary={diary}
+          onChange={handleChange}
+          onClick={handleClick}
         />
       ) : null}
     </>
