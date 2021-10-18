@@ -18,6 +18,8 @@ describe('LoginFormContainer', () => {
       loginFields: {
         email: 'test@test.com',
         password: '1234',
+        phoneNumber: '010-1234-5678',
+        affiliation: '1',
       },
       accessToken: given.accessToken,
     }));
@@ -33,6 +35,8 @@ describe('LoginFormContainer', () => {
 
       expect(getByLabelText('E-mail').value).toBe('test@test.com');
       expect(getByLabelText('Password').value).toBe('1234');
+      expect(getByLabelText('Phone-Number').value).toBe('010-1234-5678');
+      expect(getByLabelText('Affiliation').value).toBe('1');
     });
 
     it('listens change events', () => {

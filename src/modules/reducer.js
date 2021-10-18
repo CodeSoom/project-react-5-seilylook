@@ -3,6 +3,8 @@ const initialState = {
   loginFields: {
     email: '',
     password: '',
+    phoneNumber: '',
+    affiliation: '',
   },
   newId: 103,
   inputTitles: [

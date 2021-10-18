@@ -1,7 +1,12 @@
 import { memo } from 'react';
 
 const LoginForm = memo(({ fields, onChange, onSubmit }) => {
-  const { email, password } = fields;
+  const {
+    email,
+    password,
+    phoneNumber,
+    affiliation,
+  } = fields;
 
   function handleChange(event) {
     const { target: { name, value } } = event;
@@ -31,6 +36,30 @@ const LoginForm = memo(({ fields, onChange, onSubmit }) => {
           id="login-password"
           name="password"
           value={password}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="login-phoneNumber">
+          Phone-Number
+        </label>
+        <input
+          type="phoneNumber"
+          id="login-phoneNumber"
+          name="phoneNumber"
+          value={phoneNumber}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="login-affiliation">
+          Affiliation
+        </label>
+        <input
+          type="affiliation"
+          id="login-affiliation"
+          name="affiliation"
+          value={affiliation}
           onChange={handleChange}
         />
       </div>
