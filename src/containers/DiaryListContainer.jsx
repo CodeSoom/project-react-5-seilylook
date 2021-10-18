@@ -2,11 +2,11 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import List from '../components/diary/List';
+import DiaryList from '../components/diary/DiaryList';
 
 import { get } from '../modules/utils';
 
-export default function DiaryListContainer() {
+export default function DiaryDiaryListContainer() {
   const accessToken = useSelector(get('accessToken'));
 
   const { diaries } = useSelector((state) => ({
@@ -16,7 +16,7 @@ export default function DiaryListContainer() {
   return (
     <>
       {accessToken ? (
-        <List diaries={diaries} />
+        <DiaryList diaries={diaries} />
       ) : null}
     </>
   );
