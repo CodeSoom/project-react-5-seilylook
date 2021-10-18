@@ -11,10 +11,20 @@ describe('LoginForm', () => {
     handleSubmit.mockClear();
   });
 
-  function renderLoginForm({ email, password } = {}) {
+  function renderLoginForm({
+    email,
+    password,
+    phoneNumber,
+    affiliation,
+  } = {}) {
     return render((
       <LoginForm
-        fields={{ email, password }}
+        fields={{
+          email,
+          password,
+          phoneNumber,
+          affiliation,
+        }}
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
@@ -24,12 +34,21 @@ describe('LoginForm', () => {
   it('renders input controls', () => {
     const email = 'test@test.com';
     const password = '1234';
+    const phoneNumber = '010-1234-5678';
+    const affiliation = '1';
 
-    const { getByLabelText } = renderLoginForm({ email, password });
+    const { getByLabelText } = renderLoginForm({
+      email,
+      password,
+      phoneNumber,
+      affiliation,
+    });
 
     const controls = [
       { label: 'E-mail', value: email },
       { label: 'Password', value: password },
+      { label: 'Phone-Number', value: phoneNumber },
+      { label: 'Affiliation', value: affiliation },
     ];
 
     controls.forEach(({ label, value }) => {
@@ -44,6 +63,8 @@ describe('LoginForm', () => {
     const controls = [
       { label: 'E-mail', name: 'email', value: 'tester@test.com' },
       { label: 'Password', name: 'password', value: 'test' },
+      { label: 'Phone-Number', name: 'phoneNumber', value: '010-1234-5678' },
+      { label: 'Affiliation', name: 'affiliation', value: '1' },
     ];
 
     controls.forEach(({ label, name, value }) => {
