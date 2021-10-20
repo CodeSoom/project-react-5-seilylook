@@ -33,10 +33,10 @@ describe('LoginFormContainer', () => {
         <LoginFormContainer />
       ));
 
-      expect(getByLabelText('E-mail').value).toBe('test@test.com');
-      expect(getByLabelText('Password').value).toBe('1234');
-      expect(getByLabelText('Phone-Number').value).toBe('010-1234-5678');
-      expect(getByLabelText('Affiliation').value).toBe('1');
+      expect(getByLabelText('이메일').value).toBe('test@test.com');
+      expect(getByLabelText('비밀번호').value).toBe('1234');
+      expect(getByLabelText('전화번호').value).toBe('010-1234-5678');
+      expect(getByLabelText('소속').value).toBe('1');
     });
 
     it('listens change events', () => {
@@ -44,7 +44,7 @@ describe('LoginFormContainer', () => {
         <LoginFormContainer />
       ));
 
-      fireEvent.change(getByLabelText('E-mail'), {
+      fireEvent.change(getByLabelText('이메일'), {
         target: { value: 'new email' },
       });
 

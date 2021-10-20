@@ -17,7 +17,7 @@ const LoginForm = memo(({ fields, onChange, onSubmit }) => {
     <>
       <div>
         <label htmlFor="login-email">
-          E-mail
+          이메일
         </label>
         <input
           type="email"
@@ -29,7 +29,7 @@ const LoginForm = memo(({ fields, onChange, onSubmit }) => {
       </div>
       <div>
         <label htmlFor="login-password">
-          Password
+          비밀번호
         </label>
         <input
           type="password"
@@ -41,7 +41,7 @@ const LoginForm = memo(({ fields, onChange, onSubmit }) => {
       </div>
       <div>
         <label htmlFor="login-phoneNumber">
-          Phone-Number
+          전화번호
         </label>
         <input
           type="phoneNumber"
@@ -53,7 +53,7 @@ const LoginForm = memo(({ fields, onChange, onSubmit }) => {
       </div>
       <div>
         <label htmlFor="login-affiliation">
-          Affiliation
+          소속
         </label>
         <input
           type="affiliation"

@@ -45,10 +45,10 @@ describe('LoginForm', () => {
     });
 
     const controls = [
-      { label: 'E-mail', value: email },
-      { label: 'Password', value: password },
-      { label: 'Phone-Number', value: phoneNumber },
-      { label: 'Affiliation', value: affiliation },
+      { label: '이메일', value: email },
+      { label: '비밀번호', value: password },
+      { label: '전화번호', value: phoneNumber },
+      { label: '소속', value: affiliation },
     ];
 
     controls.forEach(({ label, value }) => {
@@ -61,10 +61,10 @@ describe('LoginForm', () => {
     const { getByLabelText } = renderLoginForm();
 
     const controls = [
-      { label: 'E-mail', name: 'email', value: 'tester@test.com' },
-      { label: 'Password', name: 'password', value: 'test' },
-      { label: 'Phone-Number', name: 'phoneNumber', value: '010-1234-5678' },
-      { label: 'Affiliation', name: 'affiliation', value: '1' },
+      { label: '이메일', name: 'email', value: 'tester@test.com' },
+      { label: '비밀번호', name: 'password', value: 'test' },
+      { label: '전화번호', name: 'phoneNumber', value: '010-1234-5678' },
+      { label: '소속', name: 'affiliation', value: '1' },
     ];
 
     controls.forEach(({ label, name, value }) => {
