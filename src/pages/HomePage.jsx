@@ -28,6 +28,9 @@ export default function HomePage() {
     <div>
       <List>
         <Item>
+          <Link to="/register">회원가입</Link>
+        </Item>
+        <Item>
           <Link to="/login">로그인</Link>
         </Item>
         <Item>
