@@ -22,6 +22,7 @@ import { setAccessToken } from './modules/actions';
 import { loadItem } from './services/storage';
 
 const Container = styled.div({
+  textalign: 'center',
   margin: '0 auto',
   width: '90%',
   justifyContent: 'center',
