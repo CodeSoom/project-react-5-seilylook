@@ -10,11 +10,15 @@ const initialComment = {
 const initialState = {
   accessToken: '',
   newId: 100,
-  loginFields: {
+  registerFields: {
     email: '',
     password: '',
     phoneNumber: '',
     affiliation: '',
+  },
+  loginFields: {
+    email: '',
+    password: '',
   },
   diaries: [],
   diary: initialDiary,

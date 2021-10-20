@@ -11,6 +11,7 @@ import {
 import styled from '@emotion/styled';
 
 import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import PamphletPage from './pages/PamphletPage';
 import DiaryInputPage from './pages/DiaryInputPage';
@@ -62,6 +63,7 @@ export default function App() {
       </Header>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="register" component={RegisterPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/pamphlet" component={PamphletPage} />
         <Route path="/diaryinput" component={DiaryInputPage} />
