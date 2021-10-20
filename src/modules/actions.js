@@ -45,6 +45,20 @@ export function setDiaries(diaries) {
   };
 }
 
+export function setDiary(diary) {
+  return {
+    type: 'setDiary',
+    payload: { diary },
+  };
+}
+
+export function changeCommentField({ name, value }) {
+  return {
+    type: 'changeCommentField',
+    payload: { name, value },
+  };
+}
+
 export function addDiary() {
   return {
     type: 'addDiary',
@@ -58,5 +72,11 @@ export function changeDiaryField({ name, value }) {
       name,
       value,
     },
+  };
+}
+
+export function addComment() {
+  return {
+    type: 'addComment',
   };
 }

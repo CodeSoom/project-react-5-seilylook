@@ -3,17 +3,23 @@ const initialDiary = {
   description: '',
 };
 
+const initialComment = {
+  text: '',
+};
+
 const initialState = {
   accessToken: '',
+  newId: 100,
   loginFields: {
     email: '',
     password: '',
     phoneNumber: '',
     affiliation: '',
   },
-  newId: 100,
   diaries: [],
   diary: initialDiary,
+  comments: [],
+  comment: initialComment,
 };
 
 const reducers = {
@@ -58,6 +64,16 @@ const reducers = {
     };
   },
 
+  changeCommentField(state, { payload: { name, value } }) {
+    return {
+      ...state,
+      comment: {
+        ...state.comment,
+        [name]: value,
+      },
+    };
+  },
+
   addDiary(state) {
     const { newId, diaries, diary } = state;
 
@@ -66,6 +82,16 @@ const reducers = {
       newId: newId + 1,
       diaries: [...diaries, { ...diary, id: newId }],
       diary: initialDiary,
+    };
+  },
+
+  addComment(state) {
+    const { comments, comment } = state;
+
+    return {
+      ...state,
+      comments: [...comments, { ...comment }],
+      comment: initialComment,
     };
   },
 };

@@ -4,6 +4,8 @@ import {
   setDiaries,
   changeDiaryField,
   addDiary,
+  changeCommentField,
+  addComment,
 } from './actions';
 
 import diaries from '../../fixtures/diaries';
@@ -13,6 +15,13 @@ describe('reducer', () => {
     it('shows diaries', () => {
       const initialState = {
         diaries: [],
+        diary: {
+          title: '',
+          description: '',
+        },
+        commentFields: {
+          text: '',
+        },
       };
 
       const state = reducer(initialState, setDiaries(diaries));
@@ -22,6 +31,8 @@ describe('reducer', () => {
   });
 
   describe('changeDiaryField', () => {
+    given('accessToken', () => 'ACCESS_TOKEN');
+
     it('changes diary field', () => {
       const initialState = {
         diary: {
@@ -36,6 +47,25 @@ describe('reducer', () => {
       }));
 
       expect(state.diary.title).toBe('수정된 제목');
+    });
+  });
+
+  describe('changeCommentField', () => {
+    given('accessToken', () => 'ACCESS_TOKEN');
+
+    it('changes commet field', () => {
+      const initialState = {
+        comment: {
+          text: '댓글',
+        },
+      };
+
+      const state = reducer(initialState, changeCommentField({
+        name: 'text',
+        value: '첫 댓글 입니다.',
+      }));
+
+      expect(state.comment.text).toBe('첫 댓글 입니다.');
     });
   });
 
@@ -59,6 +89,23 @@ describe('reducer', () => {
       expect(diary.id).toBe(101);
       expect(state.diary.title).toBe('');
       expect(state.newId).toBe(102);
+    });
+  });
+
+  describe('addComment', () => {
+    it('adds new comment', () => {
+      const initialState = {
+        comments: [],
+        comment: {
+          text: '새로운 댓글',
+        },
+      };
+
+      const state = reducer(initialState, addComment());
+
+      expect(state.comments).toHaveLength(1);
+
+      expect(state.comment.text).toBe('');
     });
   });
 });
