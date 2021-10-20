@@ -14,7 +14,8 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import PamphletPage from './pages/PamphletPage';
 import DiaryInputPage from './pages/DiaryInputPage';
-import DiaryListPage from './pages/DiaryListPage';
+import DiariesPage from './pages/DiariesPage';
+import DiaryPage from './pages/DiaryPage';
 
 import { setAccessToken } from './modules/actions';
 
@@ -63,7 +64,8 @@ export default function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/pamphlet" component={PamphletPage} />
         <Route path="/diaryinput" component={DiaryInputPage} />
-        <Route path="/diaryList" component={DiaryListPage} />
+        <Route exact path="/diaries" component={DiariesPage} />
+        <Route path="/diaries/:id" component={DiaryPage} />
       </Switch>
     </Container>
   );

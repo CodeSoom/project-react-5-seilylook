@@ -37,7 +37,7 @@ export default function HomePage() {
           <Link to="/diaryInput">기도 노트</Link>
         </Item>
         <Item>
-          <Link to="/diaryList">목록</Link>
+          <Link to="/diaries">노트 목록</Link>
         </Item>
       </List>
     </div>
