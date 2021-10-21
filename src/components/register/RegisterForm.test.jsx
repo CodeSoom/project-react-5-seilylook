@@ -4,9 +4,11 @@ import RegisterForm from './RegisterForm';
 
 describe('RegisterForm', () => {
   const handleChange = jest.fn();
+  const handleSubmit = jest.fn();
 
   beforeEach(() => {
     handleChange.mockClear();
+    handleSubmit.mockClear();
   });
 
   function renderRegisterForm({
@@ -24,6 +26,7 @@ describe('RegisterForm', () => {
           affiliation,
         }}
         onChange={handleChange}
+        onSubmit={handleSubmit}
       />
     ));
   }
@@ -69,5 +72,13 @@ describe('RegisterForm', () => {
       fireEvent.change(input, { target: { value } });
       expect(handleChange).toBeCalledWith({ name, value });
     });
+  });
+
+  it('renders sign-up button', () => {
+    const { getByText } = renderRegisterForm();
+
+    fireEvent.click(getByText('회원가입'));
+
+    expect(handleSubmit).toBeCalled();
   });
 });

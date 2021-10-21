@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-const RegisterForm = memo(({ fields, onChange }) => {
+const RegisterForm = memo(({ fields, onChange, onSubmit }) => {
   const {
     email,
     password,
@@ -65,8 +65,9 @@ const RegisterForm = memo(({ fields, onChange }) => {
       </div>
       <button
         type="button"
+        onClick={onSubmit}
       >
-        로그인
+        회원가입
       </button>
     </>
   );

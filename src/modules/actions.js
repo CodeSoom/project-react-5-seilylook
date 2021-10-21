@@ -43,6 +43,12 @@ export function logout() {
   };
 }
 
+export function setRegister() {
+  return {
+    type: 'setRegister',
+  };
+}
+
 export function setDiaries(diaries) {
   return {
     type: 'setDiaries',
