@@ -37,6 +37,16 @@ const reducers = {
     };
   },
 
+  changeRegisterField(state, { payload: { name, value } }) {
+    return {
+      ...state,
+      registerFields: {
+        ...state.registerFields,
+        [name]: value,
+      },
+    };
+  },
+
   setAccessToken(state, { payload: { accessToken } }) {
     return {
       ...state,

@@ -11,6 +11,13 @@ export function changeLoginField({ name, value }) {
   };
 }
 
+export function changeRegisterField({ name, value }) {
+  return {
+    type: 'changeRegisterField',
+    payload: { name, value },
+  };
+}
+
 export function setAccessToken(accessToken) {
   return {
     type: 'setAccessToken',

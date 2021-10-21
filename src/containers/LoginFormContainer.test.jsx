@@ -18,8 +18,6 @@ describe('LoginFormContainer', () => {
       loginFields: {
         email: 'test@test.com',
         password: '1234',
-        phoneNumber: '010-1234-5678',
-        affiliation: '1',
       },
       accessToken: given.accessToken,
     }));
@@ -35,8 +33,6 @@ describe('LoginFormContainer', () => {
 
       expect(getByLabelText('이메일').value).toBe('test@test.com');
       expect(getByLabelText('비밀번호').value).toBe('1234');
-      expect(getByLabelText('전화번호').value).toBe('010-1234-5678');
-      expect(getByLabelText('소속').value).toBe('1');
     });
 
     it('listens change events', () => {
