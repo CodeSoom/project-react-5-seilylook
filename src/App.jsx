@@ -63,7 +63,7 @@ export default function App() {
       </Header>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="register" component={RegisterPage} />
+        <Route path="/register" component={RegisterPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/pamphlet" component={PamphletPage} />
         <Route path="/diaryinput" component={DiaryInputPage} />
