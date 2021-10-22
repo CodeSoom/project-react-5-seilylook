@@ -13,6 +13,7 @@ import styled from '@emotion/styled';
 import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import VersesPage from './pages/VersesPage';
 import DiaryInputPage from './pages/DiaryInputPage';
 import DiariesPage from './pages/DiariesPage';
 import DiaryPage from './pages/DiaryPage';
@@ -64,6 +65,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/verses" component={VersesPage} />
         <Route path="/diaryinput" component={DiaryInputPage} />
         <Route exact path="/diaries" component={DiariesPage} />
         <Route path="/diaries/:id" component={DiaryPage} />
