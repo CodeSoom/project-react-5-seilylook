@@ -1,6 +1,8 @@
 import reducer from './reducer';
 
 import {
+  setTestaments,
+  selectTestament,
   setDiaries,
   changeDiaryField,
   addDiary,
@@ -11,6 +13,40 @@ import {
 import diaries from '../../fixtures/diaries';
 
 describe('reducer', () => {
+  describe('setTestaments', () => {
+    it('changes testaments', () => {
+      const initialState = {
+        testaments: [],
+      };
+
+      const testaments = [
+        { id: 1, name: '구약' },
+      ];
+
+      const state = reducer(initialState, setTestaments(testaments));
+
+      expect(state.testaments).toHaveLength(1);
+    });
+  });
+
+  describe('selectTestament', () => {
+    it('changes selected testament', () => {
+      const initialState = {
+        testaments: [
+          { id: 1, name: '구약' },
+        ],
+        selectedTestament: null,
+      };
+
+      const state = reducer(initialState, selectTestament(1));
+
+      expect(state.selectedTestament).toEqual({
+        id: 1,
+        name: '구약',
+      });
+    });
+  });
+
   describe('setDiaries', () => {
     it('shows diaries', () => {
       const initialState = {

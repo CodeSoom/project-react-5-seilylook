@@ -1,3 +1,5 @@
+import { equal } from './utils';
+
 const initialDiary = {
   title: '',
   description: '',
@@ -20,11 +22,11 @@ const initialState = {
     email: '',
     password: '',
   },
-  oldTestaments: [],
-  newTestaments: [],
+  testaments: [],
+  selectedTestament: null,
+  contents: [],
+  selectedContent: null,
   verses: [],
-  selectedOldTestament: null,
-  selectedNewTestament: null,
   verse: null,
   diaries: [],
   diary: initialDiary,
@@ -64,6 +66,21 @@ const reducers = {
     return {
       ...state,
       accessToken: '',
+    };
+  },
+
+  setTestaments(state, { payload: { testaments } }) {
+    return {
+      ...state,
+      testaments,
+    };
+  },
+
+  selectTestament(state, { payload: { testamentId } }) {
+    const { testaments } = state;
+    return {
+      ...state,
+      selectedTestament: testaments.find(equal('id', testamentId)),
     };
   },
 
