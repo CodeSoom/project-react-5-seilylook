@@ -27,7 +27,7 @@ export default function TestamentsContainer() {
             {testament.name}
             {selectedTestament ? (
               <>
-                {testament.id === selectTestament.id ? '(V)' : null}
+                {testament.id === selectedTestament.id ? '(V)' : null}
               </>
             ) : null}
           </button>
