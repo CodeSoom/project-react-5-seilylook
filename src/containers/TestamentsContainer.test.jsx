@@ -17,11 +17,27 @@ describe('TestamentsContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
-  context('without selectedTestament', () => {
+  context('with selectedTestament', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         testaments: TESTAMENTS,
         selectedTestament: OLDTESTAMENT,
+      }));
+    });
+
+    it('renders testaments with selected testament', () => {
+      const { container } = render((
+        <TestamentsContainer />
+      ));
+
+      expect(container).toHaveTextContent(`${OLDTESTAMENT.name}(V)`);
+    });
+  });
+
+  context('without selectedTestament', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        testaments: TESTAMENTS,
       }));
     });
 
