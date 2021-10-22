@@ -63,6 +63,20 @@ export function selectTestament(testamentId) {
   };
 }
 
+export function setContents(contents) {
+  return {
+    type: 'setContents',
+    payload: { contents },
+  };
+}
+
+export function selectContent(contentId) {
+  return {
+    type: 'selectContent',
+    payload: { contentId },
+  };
+}
+
 export function setDiaries(diaries) {
   return {
     type: 'setDiaries',

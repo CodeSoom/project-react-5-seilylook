@@ -84,6 +84,21 @@ const reducers = {
     };
   },
 
+  setContents(state, { payload: { contents } }) {
+    return {
+      ...state,
+      contents,
+    };
+  },
+
+  selectContent(state, { payload: { contentId } }) {
+    const { contents } = state;
+    return {
+      ...state,
+      selectedContent: contents.find(equal('id', contentId)),
+    };
+  },
+
   setDiaries(state, { payload: { diaries } }) {
     return {
       ...state,
