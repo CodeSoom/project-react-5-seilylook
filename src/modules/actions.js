@@ -49,6 +49,20 @@ export function setRegister() {
   };
 }
 
+export function setTestaments(testaments) {
+  return {
+    type: 'setTestaments',
+    payload: { testaments },
+  };
+}
+
+export function selectTestament(testamentId) {
+  return {
+    type: 'selectTestament',
+    payload: { testamentId },
+  };
+}
+
 export function setDiaries(diaries) {
   return {
     type: 'setDiaries',

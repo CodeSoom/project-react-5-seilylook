@@ -13,6 +13,11 @@ jest.mock('react-redux');
 describe('App', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
+      testaments: [
+        { id: 1, name: '구약' },
+      ],
+      contents: [],
+      verses: [],
       diaries: [],
       diary: {},
     }));
