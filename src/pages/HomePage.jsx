@@ -34,6 +34,9 @@ export default function HomePage() {
           <Link to="/login">로그인</Link>
         </Item>
         <Item>
+          <Link to="/verses">성경 구절</Link>
+        </Item>
+        <Item>
           <Link to="/diaryInput">기도 노트</Link>
         </Item>
         <Item>
