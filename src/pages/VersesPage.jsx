@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import TestamentsContainer from '../containers/TestamentsContainer';
 import ContentsContainer from '../containers/ContentsContainer';
+import VersesContainer from '../containers/VersesContainer';
 
 import TESTAMENTS from '../../fixtures/testaments';
 import CONTENTS from '../../fixtures/contents';
@@ -26,6 +27,7 @@ export default function VersesPage() {
       <h2>성경 구절</h2>
       <TestamentsContainer />
       <ContentsContainer />
+      <VersesContainer />
     </div>
   );
 }

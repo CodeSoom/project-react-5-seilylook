@@ -65,7 +65,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/verses" component={VersesPage} />
+        <Route exact path="/verses" component={VersesPage} />
         <Route path="/diaryinput" component={DiaryInputPage} />
         <Route exact path="/diaries" component={DiariesPage} />
         <Route path="/diaries/:id" component={DiaryPage} />
