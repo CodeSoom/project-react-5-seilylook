@@ -12,7 +12,7 @@ describe('VersesContainer', () => {
   it('renders verses', () => {
     useSelector.mockImplementation((selector) => selector({
       verses: [
-        { id: 1, phrase: '구절 테스트' },
+        { id: 1, name: '구절 테스트' },
       ],
     }));
 

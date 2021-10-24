@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   selectTestament,
+  loadVerses,
 } from '../modules/actions';
 
 import { get } from '../modules/utils';
@@ -14,6 +15,7 @@ export default function TestamentsContainer() {
 
   function handleClick(testamentId) {
     dispatch(selectTestament(testamentId));
+    dispatch(loadVerses());
   }
 
   return (

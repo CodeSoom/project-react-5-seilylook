@@ -99,6 +99,13 @@ const reducers = {
     };
   },
 
+  setVerses(state, { payload: { verses } }) {
+    return {
+      ...state,
+      verses,
+    };
+  },
+
   setDiaries(state, { payload: { diaries } }) {
     return {
       ...state,

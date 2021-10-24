@@ -6,25 +6,20 @@ import TestamentsContainer from '../containers/TestamentsContainer';
 import ContentsContainer from '../containers/ContentsContainer';
 import VersesContainer from '../containers/VersesContainer';
 
-import TESTAMENTS from '../../fixtures/testaments';
-import CONTENTS from '../../fixtures/contents';
-
 import {
-  setTestaments,
-  setContents,
+  loadInitialData,
 } from '../modules/actions';
 
 export default function VersesPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setTestaments(TESTAMENTS));
-    dispatch(setContents(CONTENTS));
+    dispatch(loadInitialData());
   });
 
   return (
     <div>
-      <h2>성경 구절</h2>
+      <h2>성경 목차</h2>
       <TestamentsContainer />
       <ContentsContainer />
       <VersesContainer />
