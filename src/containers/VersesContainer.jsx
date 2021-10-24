@@ -8,12 +8,15 @@ export default function VersesContainer() {
   const verses = useSelector(get('verses'));
 
   return (
-    <ul>
-      {verses.map((verse) => (
-        <li key={verse.id}>
-          {verse.phrase}
-        </li>
-      ))}
-    </ul>
+    <>
+      <h3>좋은 구절</h3>
+      <ul>
+        {verses.map((verse) => (
+          <li key={verse.id}>
+            {verse.name}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

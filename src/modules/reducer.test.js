@@ -4,15 +4,57 @@ import {
   setTestaments,
   selectTestament,
   setDiaries,
+  setAccessToken,
   changeDiaryField,
   addDiary,
   changeCommentField,
   addComment,
+  setContents,
+  setVerses,
+  selectContent,
 } from './actions';
 
 import diaries from '../../fixtures/diaries';
 
 describe('reducer', () => {
+  context('when previous state is undefined', () => {
+    const initialState = {
+      accessToken: '',
+      newId: 100,
+      registerFields: {
+        email: '',
+        password: '',
+        phoneNumber: '',
+        affiliation: '',
+      },
+      loginFields: {
+        email: '',
+        password: '',
+      },
+      testaments: [],
+      selectedTestament: null,
+      contents: [],
+      selectedContent: null,
+      verses: [],
+      verse: null,
+      diaries: [],
+      diary: {
+        title: '',
+        description: '',
+      },
+      comments: [],
+      comment: {
+        text: '',
+      },
+    };
+
+    it('returns initialState', () => {
+      const state = reducer(undefined, { type: 'action' });
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
   describe('setTestaments', () => {
     it('changes testaments', () => {
       const initialState = {
@@ -26,6 +68,38 @@ describe('reducer', () => {
       const state = reducer(initialState, setTestaments(testaments));
 
       expect(state.testaments).toHaveLength(1);
+    });
+  });
+
+  describe('setContents', () => {
+    it('changes contents', () => {
+      const initialState = {
+        contents: [],
+      };
+
+      const contents = [
+        { id: 1, name: '창세기' },
+      ];
+
+      const state = reducer(initialState, setContents(contents));
+
+      expect(state.contents).toHaveLength(1);
+    });
+  });
+
+  describe('setVerses', () => {
+    it('changes verses', () => {
+      const initialState = {
+        verses: [],
+      };
+
+      const verses = [
+        { id: 1, name: '구절 테스트' },
+      ];
+
+      const state = reducer(initialState, setVerses(verses));
+
+      expect(state.verses).toHaveLength(1);
     });
   });
 
@@ -43,6 +117,24 @@ describe('reducer', () => {
       expect(state.selectedTestament).toEqual({
         id: 1,
         name: '구약',
+      });
+    });
+  });
+
+  describe('selectContent', () => {
+    it('changes selected content', () => {
+      const initialState = {
+        contents: [
+          { id: 1, name: '창세기' },
+        ],
+        selectedContent: null,
+      };
+
+      const state = reducer(initialState, selectContent(1));
+
+      expect(state.selectedContent).toEqual({
+        id: 1,
+        name: '창세기',
       });
     });
   });
@@ -143,5 +235,15 @@ describe('reducer', () => {
 
       expect(state.comment.text).toBe('');
     });
+  });
+
+  describe('setAccessToken', () => {
+    const initialState = {
+      accessToken: '',
+    };
+
+    const state = reducer(initialState, setAccessToken('TOKEN'));
+
+    expect(state.accessToken).toBe('TOKEN');
   });
 });

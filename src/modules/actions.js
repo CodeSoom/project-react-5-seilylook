@@ -1,5 +1,8 @@
 import {
   postLogin,
+  fetchTestaments,
+  fetchContents,
+  fetchVerses,
 } from '../services/api';
 
 import { saveItem } from '../services/storage';
@@ -77,6 +80,13 @@ export function selectContent(contentId) {
   };
 }
 
+export function setVerses(verses) {
+  return {
+    type: 'setVerses',
+    payload: { verses },
+  };
+}
+
 export function setDiaries(diaries) {
   return {
     type: 'setDiaries',
@@ -119,5 +129,35 @@ export function changeDiaryField({ name, value }) {
 export function addComment() {
   return {
     type: 'addComment',
+  };
+}
+
+export function loadInitialData() {
+  return async (dispatch) => {
+    const testaments = await fetchTestaments();
+    dispatch(setTestaments(testaments));
+
+    const contents = await fetchContents();
+    dispatch(setContents(contents));
+  };
+}
+
+export function loadVerses() {
+  return async (dispatch, getState) => {
+    const {
+      selectedTestament: testament,
+      selectedContent: content,
+    } = getState();
+
+    if (!testament || !content) {
+      return;
+    }
+
+    const verses = await fetchVerses({
+      testamentName: testament.name,
+      contentId: content.id,
+    });
+
+    dispatch(setVerses(verses));
   };
 }

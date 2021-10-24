@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   selectContent,
+  loadVerses,
 } from '../modules/actions';
 
 import { get } from '../modules/utils';
@@ -14,6 +15,7 @@ export default function ContentsContainer() {
 
   function handleClick(contentId) {
     dispatch(selectContent(contentId));
+    dispatch(loadVerses());
   }
 
   return (
