@@ -4,6 +4,7 @@ React & Redux를 이용한 교회 내에서 사용될 웹애플리케이션입�
 
 ```
 1. 동작 방법
+
 git clone 
 
 npm install
