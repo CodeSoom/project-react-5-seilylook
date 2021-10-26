@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import styled from '@emotion/styled';
+import mediaquery from './styles/mediaquery';
 
 import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
@@ -22,28 +23,24 @@ import { setAccessToken } from './modules/actions';
 
 import { loadItem } from './services/storage';
 
-const Container = styled.div({
-  textalign: 'center',
+const Container = styled.header(mediaquery({
   margin: '0 auto',
-  width: '90%',
-  justifyContent: 'center',
-});
+  lineHeight: ['4em', '5em', '6em', '9em', '11em', '12em'],
+}));
 
-const Header = styled.header({
-  backgroundColor: '#EEE',
-  '& h1': {
-    fontSize: '1.5em',
-    margin: 0,
-    padding: '1em .5em',
-  },
+const Header = styled.h1(mediaquery({
+  margin: '0 auto',
+  color: 'black',
+  fontSize: ['1.8em', '1.9em', '2.3em', '2.8em', '3.5em', '3.8em'],
+  textAlign: 'center',
   '& a': {
-    color: '#555',
-    textDecoration: 'none',
+    color: 'black',
+    cursor: 'pointer',
     '&:hover': {
-      color: '#000',
+      color: 'black',
     },
   },
-});
+}));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -55,12 +52,12 @@ export default function App() {
   }
 
   return (
-    <Container>
-      <Header>
-        <h1>
-          <Link to="/">Home</Link>
-        </h1>
-      </Header>
+    <>
+      <Container>
+        <Header>
+          <Link to="/">구름이노트</Link>
+        </Header>
+      </Container>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/register" component={RegisterPage} />
@@ -70,6 +67,6 @@ export default function App() {
         <Route exact path="/diaries" component={DiariesPage} />
         <Route path="/diaries/:id" component={DiaryPage} />
       </Switch>
-    </Container>
+    </>
   );
 }
