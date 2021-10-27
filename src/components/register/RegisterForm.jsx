@@ -1,5 +1,52 @@
 import { memo } from 'react';
 
+import styled from '@emotion/styled';
+import colors from '../../styles/colors';
+
+const Container = styled.div({
+  margin: '0 auto',
+  padding: 0,
+  textAlign: 'center',
+});
+
+const FormBox = styled.div({
+  padding: '0 0.5em 0.5em',
+  '& label': {
+    width: '14em',
+    padding: '1.5em 0.5em',
+    color: `${colors.black}`,
+    fontSize: '0.7em',
+    textAlign: 'center',
+  },
+  '& input': {
+    width: '16em',
+    heigth: '3em',
+    margin: '0 auto',
+    padding: '0.5em',
+    border: '1px solid #eee',
+    color: `${colors.gray_input}`,
+    backgroundColor: 'transparent',
+    fontsize: '0.6em',
+    outlineStyle: 'none',
+  },
+});
+
+const Button = styled.div({
+  width: '16em',
+  height: '1em',
+  margin: '1em auto 0.5em',
+  borderRadius: '0.2em',
+  backgroundColor: `${colors.button}`,
+  fontsize: '0.7em',
+  cursor: 'pointer',
+  lineHeight: 1,
+  '&:hover': {
+    color: `${colors.white}`,
+    backgroundColor: `${colors.blue_text}`,
+    fontWeight: '600',
+  },
+});
+
 const RegisterForm = memo(({ fields, onChange, onSubmit }) => {
   const {
     email,
@@ -14,8 +61,8 @@ const RegisterForm = memo(({ fields, onChange, onSubmit }) => {
   }
 
   return (
-    <>
-      <div>
+    <Container>
+      <FormBox>
         <label htmlFor="register-email">
           이메일
         </label>
@@ -26,8 +73,8 @@ const RegisterForm = memo(({ fields, onChange, onSubmit }) => {
           value={email}
           onChange={handleChange}
         />
-      </div>
-      <div>
+      </FormBox>
+      <FormBox>
         <label htmlFor="register-password">
           비밀번호
         </label>
@@ -38,8 +85,8 @@ const RegisterForm = memo(({ fields, onChange, onSubmit }) => {
           value={password}
           onChange={handleChange}
         />
-      </div>
-      <div>
+      </FormBox>
+      <FormBox>
         <label htmlFor="register-phoneNumber">
           전화번호
         </label>
@@ -50,8 +97,8 @@ const RegisterForm = memo(({ fields, onChange, onSubmit }) => {
           value={phoneNumber}
           onChange={handleChange}
         />
-      </div>
-      <div>
+      </FormBox>
+      <FormBox>
         <label htmlFor="register-affiliation">
           소속
         </label>
@@ -62,14 +109,14 @@ const RegisterForm = memo(({ fields, onChange, onSubmit }) => {
           value={affiliation}
           onChange={handleChange}
         />
-      </div>
-      <button
+      </FormBox>
+      <Button
         type="button"
         onClick={onSubmit}
       >
         회원가입
-      </button>
-    </>
+      </Button>
+    </Container>
   );
 });
 
