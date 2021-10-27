@@ -35,7 +35,7 @@ describe('App', () => {
     it('renders / page', () => {
       const { container } = renderApp({ path: '/' });
 
-      expect(container).toHaveTextContent('Home');
+      expect(container).toHaveTextContent('구름이노트');
     });
   });
 });

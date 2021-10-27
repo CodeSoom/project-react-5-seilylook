@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import styled from '@emotion/styled';
-import mediaquery from '../../styles/mediaquery';
+import colors from '../../styles/colors';
 
 const Container = styled.div({
   margin: '0 auto',
@@ -9,69 +9,43 @@ const Container = styled.div({
   textAlign: 'center',
 });
 
-const FormBox = styled.div(mediaquery({
-  width: ['11em', '11em', '14em', '22em', '26em', '29em'],
-  height: ['9em', '8em', '8em', '9em', '10em', '10.5em'],
-  margin: '0 auto',
-  padding: [
-    '0.5em',
-    '0 0.5em 0.5em',
-    '0 0.5em 0.5em',
-    '0 0.5em 0.5em',
-    '0 0.5em 0.5em',
-    '0 0.5em 0.5em',
-  ],
-  borderRadius: '0.2em',
-  backgroundColor: 'white',
-  textAlign: 'center',
+const FormBox = styled.div({
+  padding: '0 0.5em 0.5em',
   '& label': {
-    display: 'inline-block',
-    width: ['14em', '13em', '17em', '6em', '6em', '6em'],
-    padding: [
-      '1em 0 0.5em',
-      '1em 0 0.5em',
-      '1em 0 0.5em',
-      '1.5em 0.5em',
-      '1.6em 0.5em',
-      '1.5em 0.5em',
-    ],
-    color: 'gray',
-    fontSize: ['0.7em', '0.7em', '0.7em', '1em', '1.1em', '1.2em'],
-    fontWeight: '600',
+    width: '14em',
+    padding: '1.5em 0.5em',
+    color: `${colors.black}`,
+    fontSize: '0.7em',
     textAlign: 'center',
   },
   '& input': {
-    width: ['16em', '16em', '20em', '17em', '20em', '70%'],
-    height: ['3em', '3em', '3em', '3em', '3.3em', '3.5em'],
+    width: '16em',
+    heigth: '3em',
     margin: '0 auto',
     padding: '0.5em',
     border: '1px solid #eee',
-    borderRadius: '0.5em',
-    color: 'gray',
+    color: `${colors.gray_input}`,
     backgroundColor: 'transparent',
-    fontSize: ['0.6em', '0.6em', '0.6em', '0.8em', '0.9em', '1em'],
+    fontsize: '0.6em',
     outlineStyle: 'none',
   },
-}));
+});
 
-const Button = styled.button(mediaquery({
-  display: 'block',
-  width: ['16em', '15.5em', '20em', '22em', '22em', '21em'],
-  height: ['1em', '1.2em', '1.2em', '1.5em', '1.5em', '1.8em'],
+const Button = styled.div({
+  width: '16em',
+  height: '1em',
   margin: '1em auto 0.5em',
-  padding: '0.5em 0',
   borderRadius: '0.2em',
-  backgroundColor: 'gray',
-  fontSize: ['0.7em', '0.7em', '0.7em', '1em', '1.2em', '1.4em'],
-  fontWeight: '500',
+  backgroundColor: `${colors.button}`,
+  fontsize: '0.7em',
   cursor: 'pointer',
   lineHeight: 1,
   '&:hover': {
-    color: 'white',
-    backgroundColor: 'sky',
+    color: `${colors.white}`,
+    backgroundColor: `${colors.blue_text}`,
     fontWeight: '600',
   },
-}));
+});
 
 const LoginForm = memo(({ fields, onChange, onSubmit }) => {
   const {
@@ -98,6 +72,8 @@ const LoginForm = memo(({ fields, onChange, onSubmit }) => {
           value={email}
           onChange={handleChange}
         />
+      </FormBox>
+      <FormBox>
         <label htmlFor="login-password">
           비밀번호
         </label>

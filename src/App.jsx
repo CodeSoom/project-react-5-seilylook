@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 import styled from '@emotion/styled';
-import mediaquery from './styles/mediaquery';
+import colors from './styles/colors';
 
 import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
@@ -23,24 +23,29 @@ import { setAccessToken } from './modules/actions';
 
 import { loadItem } from './services/storage';
 
-const Container = styled.header(mediaquery({
+const Container = styled.div({
   margin: '0 auto',
-  lineHeight: ['4em', '5em', '6em', '9em', '11em', '12em'],
-}));
+  width: '90%',
+  justifyContent: 'center',
+});
 
-const Header = styled.h1(mediaquery({
-  margin: '0 auto',
-  color: 'black',
-  fontSize: ['1.8em', '1.9em', '2.3em', '2.8em', '3.5em', '3.8em'],
+const Header = styled.header({
+  backgroundColor: `${colors.home_background}`,
+  fontSize: '3.5em',
   textAlign: 'center',
+  '& h1': {
+    fontSize: '2.3em',
+    margin: 0,
+    padding: '1em .5em',
+  },
   '& a': {
-    color: 'black',
-    cursor: 'pointer',
+    color: `${colors.white}`,
+    textDecoration: 'none',
     '&:hover': {
-      color: 'black',
+      color: '#000',
     },
   },
-}));
+});
 
 export default function App() {
   const dispatch = useDispatch();
