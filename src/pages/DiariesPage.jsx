@@ -21,7 +21,17 @@ const Container = styled.div(mediaquery({
   padding: 0,
   borderRadius: '0.5em',
   textAlign: 'center',
-  background: `${colors.login_background}`,
+  background: `${colors.white}`,
+}));
+
+const Title = styled.h2(mediaquery({
+  display: 'inline-block',
+  width: ['14em', '14em', '18em', '18.6em', '16.6em', '17.5em'],
+  height: ['1em', '1em', '1em', '1em', '1.2em', '1.3em'],
+  margin: '1em auto',
+  fontSize: ['1em', '1em', '1em', '1.5em', '1.8em', '2em'],
+  textAlign: 'center',
+  letterSpacing: '0.2em',
 }));
 
 export default function DiariesPage() {
@@ -34,6 +44,7 @@ export default function DiariesPage() {
 
   return (
     <Container>
+      <Title>게시판</Title>
       <DiariesContainer onClickDiary={handleClickDiary} />
     </Container>
   );
