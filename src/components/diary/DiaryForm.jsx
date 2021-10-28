@@ -43,7 +43,7 @@ const FormBox = styled.div(mediaquery({
     margin: '0 auto',
     padding: '0.5em',
     border: '1px solid #eee',
-    color: `${colors.gray_input}`,
+    color: `${colors.black}`,
     backgroundColor: 'transparent',
     fontSize: ['0.6em', '0.6em', '0.6em', '0.8em', '0.9em', '1em'],
     outlineStyle: 'none',
