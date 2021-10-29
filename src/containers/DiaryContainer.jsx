@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import DiaryDetail from '../pages/DiaryDetail';
@@ -8,6 +9,7 @@ import CommentsList from '../components/comment/CommentsList';
 import {
   changeCommentField,
   addComment,
+  setDiary,
 } from '../modules/actions';
 
 import { get } from '../modules/utils';
@@ -18,11 +20,9 @@ export default function DiaryContainer({ diaryId }) {
   const diary = useSelector(get('diary'));
   const accessToken = useSelector(get('accessToken'));
 
-  if (!diary) {
-    return (
-      <p>기도 노트가 없습니다.</p>
-    );
-  }
+  useEffect(() => {
+    dispatch(setDiary(diary));
+  });
 
   function handleChange({ name, value }) {
     dispatch(changeCommentField({ name, value }));
@@ -30,6 +30,12 @@ export default function DiaryContainer({ diaryId }) {
 
   function handleSubmit() {
     dispatch(addComment({ diaryId }));
+  }
+
+  if (!diary) {
+    return (
+      <p>기도 노트가 없습니다.</p>
+    );
   }
 
   return (

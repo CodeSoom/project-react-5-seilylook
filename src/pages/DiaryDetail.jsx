@@ -6,8 +6,14 @@ export default function DiaryDetail({ diary }) {
   return (
     <div>
       <h2>상세보기</h2>
-      {title}
-      {description}
+      <p>
+        제목:
+        {title}
+      </p>
+      <p>
+        설명:
+        {description}
+      </p>
     </div>
   );
 }
