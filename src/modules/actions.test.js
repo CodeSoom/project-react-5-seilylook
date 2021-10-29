@@ -102,7 +102,7 @@ describe('actions', () => {
 
       expect(actions[0]).toEqual({
         type: 'setAccessToken',
-        payload: { accessToken: '' },
+        payload: { accessToken: { } },
       });
     });
   });
