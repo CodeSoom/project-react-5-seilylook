@@ -7,12 +7,6 @@ import DiaryContainer from './DiaryContainer';
 describe('DiaryContainer', () => {
   const dispatch = jest.fn();
 
-  function renderDiaryContainer() {
-    return render((
-      <DiaryContainer diaryId="1" />
-    ));
-  }
-
   beforeEach(() => {
     dispatch.mockClear();
 
@@ -42,13 +36,6 @@ describe('DiaryContainer', () => {
         },
       ],
     }));
-
-    it('renders title and description', () => {
-      const { container } = renderDiaryContainer();
-
-      expect(container).toHaveTextContent('오늘의 기도');
-      expect(container).toHaveTextContent('감사합니다');
-    });
 
     context('without logged-in', () => {
       it('renders no comment with fields', () => {
@@ -92,6 +79,16 @@ describe('DiaryContainer', () => {
             payload: { name, value },
           });
         });
+      });
+
+      it('shos "댓글 남기기" button clicked', () => {
+        const { getByText } = render((
+          <DiaryContainer diaryId="1" />
+        ));
+
+        fireEvent.click(getByText('댓글 남기기'));
+
+        expect(dispatch).toBeCalledTimes(1);
       });
     });
   });

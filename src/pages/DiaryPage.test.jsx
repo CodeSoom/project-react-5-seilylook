@@ -27,16 +27,6 @@ describe('DiaryPage', () => {
   });
 
   context('with param props', () => {
-    it('renders name', () => {
-      const params = { id: '1' };
-
-      const { container } = render((
-        <DiaryPage params={params} />
-      ));
-
-      expect(container).toHaveTextContent('오늘의 기도');
-    });
-
     it('renders comment write form', () => {
       const params = { id: '1' };
 
@@ -56,7 +46,7 @@ describe('DiaryPage', () => {
         </MemoryRouter>,
       );
 
-      expect(container).toHaveTextContent('오늘의 기도');
+      expect(container).toHaveTextContent('댓글이 없습니다');
     });
   });
 });
