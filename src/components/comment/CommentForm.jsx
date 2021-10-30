@@ -9,13 +9,8 @@ export default function CommentForm({ onChange, onSubmit }) {
         label="댓글"
         name="text"
         onChange={onChange}
+        onSubmit={onSubmit}
       />
-      <button
-        type="button"
-        onClick={onSubmit}
-      >
-        댓글 남기기
-      </button>
     </>
   );
 }
