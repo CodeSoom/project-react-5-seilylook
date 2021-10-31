@@ -5,10 +5,17 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import mediaquery from '../styles/mediaquery';
 
+const Container = styled.div(mediaquery({
+  margin: '0 auto',
+  width: '90%',
+  justifyContent: 'center',
+}));
+
 const List = styled.ul(mediaquery({
   width: '100%',
-  margin: 0,
+  marginTop: '2em',
   padding: 0,
+  display: 'flex',
 }));
 
 const Item = styled.li(mediaquery({
@@ -31,7 +38,7 @@ const Item = styled.li(mediaquery({
 
 export default function HomePage() {
   return (
-    <>
+    <Container>
       <List>
         <Item>
           <Link to="/register">회원가입</Link>
@@ -46,9 +53,9 @@ export default function HomePage() {
           <Link to="/diaryInput">기도 노트</Link>
         </Item>
         <Item>
-          <Link to="/diaries">게시판</Link>
+          <Link to="/diaries">댓글</Link>
         </Item>
       </List>
-    </>
+    </Container>
   );
 }
