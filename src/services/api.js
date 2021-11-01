@@ -12,21 +12,21 @@ export async function postLogin({ email, password }) {
 }
 
 export async function fetchTestaments() {
-  const url = 'http://localhost:7000/testaments';
+  const url = 'https://project-react-json-server.herokuapp.com/testaments';
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
 
 export async function fetchContents() {
-  const url = 'http://localhost:7000/contents';
+  const url = 'https://project-react-json-server.herokuapp.com/contents';
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
 
 export async function fetchVerses({ testamentName, contentId }) {
-  const url = 'http://localhost:7000/verses'
+  const url = 'https://project-react-json-server.herokuapp.com/verses'
     + `?testament=${testamentName}&content=${contentId}`;
   const response = await fetch(url);
   const data = await response.json();
