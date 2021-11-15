@@ -4,37 +4,61 @@ import { Link } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import mediaquery from '../styles/mediaquery';
+import mainCharacter from '../../images/mainIcon.png';
 
-const Container = styled.div(mediaquery({
-  margin: '0 auto',
-  width: '90%',
-  justifyContent: 'center',
-}));
+const Container = styled.div(
+  mediaquery({
+    margin: '0 auto',
+    width: '90%',
+    justifyContent: 'center',
+  }),
+);
 
-const List = styled.ul(mediaquery({
-  width: '100%',
-  marginTop: '2em',
-  padding: 0,
-  display: 'flex',
-}));
+const List = styled.ul(
+  mediaquery({
+    width: '100%',
+    marginTop: '2em',
+    padding: 0,
+    display: 'flex',
+  }),
+);
 
-const Item = styled.li(mediaquery({
-  width: ['5em', '5em', '5em', '5em', '5em', '5em'],
-  height: ['2em', '2em', '2em', '2.4em', '2.5em'],
-  margin: '0 2em 0 auto',
-  padding: '0.5em',
-  borderRadius: '0.4em',
-  listStyle: 'none',
-  '& a': {
-    color: '#333',
-    fontSize: ['0.6em', '0.7em', '0.8em', '0.9em', '1.1em', '1.4em'],
-    textDecoration: 'none',
-    '&:hover': {
-      fontWeight: 'bold',
-      color: '#000',
+const Item = styled.li(
+  mediaquery({
+    width: ['5em', '5em', '5em', '5em', '5em', '5em'],
+    height: ['2em', '2em', '2em', '2.4em', '2.5em'],
+    margin: '0 2em 0 auto',
+    padding: '0.5em',
+    borderRadius: '0.4em',
+    listStyle: 'none',
+    '& a': {
+      color: '#333',
+      fontSize: ['0.6em', '0.7em', '0.8em', '0.9em', '1.1em', '1.4em'],
+      textDecoration: 'none',
+      '&:hover': {
+        fontWeight: 'bold',
+        color: '#000',
+      },
     },
-  },
-}));
+  }),
+);
+
+const Image = styled.div(
+  mediaquery({
+    width: ['30em', '30em', '35em', '50em', '65em', '95em'],
+    justifyContent: 'center',
+  }),
+);
+
+const Character = styled.img(
+  mediaquery({
+    width: ['30em', '30em', '35em', '50em', '65em', '95em'],
+    height: ['30em', '30em', '35em', '50em', '65em', '95em'],
+    margin: '0 2em 0 auto',
+    padding: '0.5em',
+    justifyContent: 'center',
+  }),
+);
 
 export default function HomePage() {
   return (
@@ -56,6 +80,9 @@ export default function HomePage() {
           <Link to="/diaries">댓글</Link>
         </Item>
       </List>
+      <Image>
+        <Character src={mainCharacter} alt="MainCharactor" />
+      </Image>
     </Container>
   );
 }
