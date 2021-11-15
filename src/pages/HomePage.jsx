@@ -45,14 +45,18 @@ const Item = styled.li(
 
 const Image = styled.div(
   mediaquery({
-    width: ['5em', '5em', '5em', '5em', '5em', '5em'],
+    width: ['30em', '30em', '35em', '50em', '65em', '95em'],
     justifyContent: 'center',
   }),
 );
 
 const Character = styled.img(
   mediaquery({
-    width: ['30em', '30em', '30em', '35em', '35em', '40em'],
+    width: ['30em', '30em', '35em', '50em', '65em', '95em'],
+    height: ['30em', '30em', '35em', '50em', '65em', '95em'],
+    margin: '0 2em 0 auto',
+    padding: '0.5em',
+    justifyContent: 'center',
   }),
 );
 
