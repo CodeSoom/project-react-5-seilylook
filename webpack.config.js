@@ -22,5 +22,8 @@ module.exports = {
     historyApiFallback: {
       index: 'index.html',
     },
+    proxy: {
+      '/api': 'http://localhost:4000',
+    },
   },
 };
