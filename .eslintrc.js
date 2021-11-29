@@ -4,20 +4,16 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
+  extends: ['plugin:react/recommended', 'airbnb'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      js: true,
     },
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  plugins: ['react'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -44,7 +40,7 @@ module.exports = {
     'comma-dangle': ['error', 'always-multiline'],
     'space-in-parens': ['error', 'never'],
     'block-spacing': 'error',
-    'array-bracket-spacing': ['error', 'never'],
+    'array-bracket-spacing': ['error', 'as-needed'],
     'object-curly-spacing': ['error', 'always'],
     'key-spacing': ['error', { mode: 'strict' }],
     'arrow-spacing': ['error', { before: true, after: true }],
@@ -56,6 +52,5 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
 
     'import/no-unresolved': 'off',
-
   },
 };
